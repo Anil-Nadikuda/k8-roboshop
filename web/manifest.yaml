@@ -113,6 +113,14 @@ spec:
         tier: web
     spec:
       containers:
+      - name: web
+        image: anilnadikuda/web:v1
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+          readOnly: true
       volumes:
       - name: nginx.config
         configMap:
@@ -120,14 +128,6 @@ spec:
           items:
           - key: nginx.conf
             path: nginx.conf
-      - name: web
-        image: joindevops/web:v1
-        imagePullPolicy: Always
-        volumeMounts:
-        - name: nginx-conf
-          mountPath: /etc/nginx/nginx.conf
-          subPath: nginx.conf
-          readOnly: true
 ---
 apiVersion: v1
 kind: Service
