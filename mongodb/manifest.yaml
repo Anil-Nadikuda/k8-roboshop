@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: mongodb
+  namespace: roboshop
   labels:
     app: mongodb
     project: roboshop
@@ -25,7 +26,7 @@ spec:
         image: anilnadikuda/mongodb:v1
         imagePullPloicy: Always
 
-----
+---
 apiVersion: v1
 kind: Service
 metadata:
