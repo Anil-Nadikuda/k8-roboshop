@@ -122,7 +122,7 @@ spec:
           subPath: nginx.conf
           readOnly: true
       volumes:
-      - name: nginx.config
+      - name: nginx.conf
         configMap:
           name: web
           items:
