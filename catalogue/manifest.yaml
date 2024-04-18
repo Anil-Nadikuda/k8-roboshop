@@ -7,7 +7,7 @@ data:
   MONGO: true
 
 ---
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalogue
@@ -42,13 +42,13 @@ metadata:
 apiVersion: v1
 Kind: Service
 metadata:
-  name: mongodb
+  name: catalogue
   namespace: roboshop
 spec:
   selector:
-    app: mongodb
+    app: catalogue
     project: roboshop
-    tier: db
+    tier: app
   ports:
   - protocol: TCP
     port: 8080
