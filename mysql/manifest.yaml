@@ -9,13 +9,13 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: devops-secret
+  name: mysql
+  namespace: roboshop
 type: Opaque
 data:
   MYSQL_ROOT_PASSWORD: Um9ib1Nob3BAMQ==
   MYSQL_USER: c2hpcHBpbmc=
   MYSQL_PASSWORD: Um9ib1Nob3BAMQ==
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -45,10 +45,10 @@ spec:
         image: anilnadikuda/mysql:v1
         imagePullPolicy: Always
         envFrom:
-        - configMapRef: 
+        - configMapRef:
             name: mysql
-        - secretRef: 
-          name: devops-secret
+        - secretRef:
+            name: mysql
 ---
 apiVersion: v1
 kind: Service
